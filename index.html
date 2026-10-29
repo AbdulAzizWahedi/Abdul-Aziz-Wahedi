@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Aziz Wahedi | Network Engineer & IT Specialist</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            50: '#e6fffa',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#042f2e',
+                            950: '#021a19',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        dari: ['Vazirmatn', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Vazirmatn (for Dari) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Vazirmatn:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        body[dir="rtl"] {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Glassmorphism Styles tuned for Dark & Premium Light Mode */
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        html:not(.dark) .glass {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Card styles for clean light and dark contrast */
+        .card-bg {
+            background-color: rgba(15, 23, 42, 0.95);
+            border-color: rgba(30, 41, 59, 1);
+        }
+        html:not(.dark) .card-bg {
+            background-color: #ffffff;
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+        }
+
+        .glow-border {
+            box-shadow: 0 0 25px rgba(20, 184, 166, 0.35);
+        }
+        .glow-border:hover {
+            box-shadow: 0 0 35px rgba(20, 184, 166, 0.6);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        html:not(.dark) ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0284c7;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #14b8a6;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Three.js 3D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200 dark:border-slate-800/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#hero" class="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-3 group">
+                <span class="bg-gradient-to-tr from-sky-600 to-teal-500 dark:from-cyan-500 dark:to-emerald-400 text-white dark:text-slate-950 w-10 h-10 rounded-xl flex items-center justify-center font-extrabold shadow-md group-hover:scale-105 transition-transform duration-200 code-font">AW</span>
+                <div>
+                    <span class="block text-sm font-bold tracking-wide text-slate-900 dark:text-white" data-i18n="name">Abdul Aziz Wahedi</span>
+                    <span class="block text-xs text-sky-700 dark:text-teal-400 font-mono" data-i18n="nav_subtitle">Network Engineer</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-semibold">
+                <a href="#about" class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-teal-400 transition-colors" data-i18n="nav_about">About Me</a>
+                <a href="#skills" class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-teal-400 transition-colors" data-i18n="nav_skills">Skills & Certificates</a>
+                <a href="#services" class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-teal-400 transition-colors" data-i18n="nav_services">What I Do</a>
+                <a href="#files" class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-teal-400 transition-colors" data-i18n="nav_files">Files & Downloads</a>
+                <a href="#contact" class="text-slate-700 dark:text-slate-300 hover:text-sky-600 dark:hover:text-teal-400 transition-colors" data-i18n="nav_contact">Contact</a>
+            </nav>
+
+            <!-- Actions (Theme Toggle, Language Switcher, Contact Button & Quick Phone) -->
+            <div class="hidden md:flex items-center gap-3">
+                <!-- Theme Mode Toggle -->
+                <button id="theme-toggle" aria-label="Toggle Dark/Light Theme" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-teal-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all">
+                    <i class="fas fa-sun text-amber-500 dark:hidden"></i>
+                    <i class="fas fa-moon hidden dark:inline text-teal-400"></i>
+                </button>
+
+                <!-- Language Switcher Button -->
+                <button id="lang-toggle" aria-label="Switch Language" class="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-sky-700 dark:text-teal-400 text-xs font-mono font-bold hover:bg-slate-200 dark:hover:bg-slate-800 transition-all flex items-center gap-2">
+                    <i class="fas fa-globe"></i>
+                    <span id="lang-label">دری / EN</span>
+                </button>
+                <a href="tel:+93790855072" class="text-xs font-mono px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-sky-700 dark:text-teal-400 font-bold flex items-center gap-2">
+                    <i class="fas fa-phone-alt"></i> +93 790 855 072
+                </a>
+                
+                <!-- Spacing / Divider -->
+                <div class="h-6 w-px bg-slate-300 dark:bg-slate-800 mx-1"></div>
+
+                <!-- Download CV Nav Button -->
+                <button id="download-cv-nav" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-sky-600/40 dark:border-teal-500/50 text-sky-700 dark:text-teal-400 font-bold text-xs hover:bg-sky-600 dark:hover:bg-teal-500 hover:text-white dark:hover:text-slate-950 transition-all duration-200 flex items-center gap-2">
+                    <i class="fas fa-download"></i> <span data-i18n="nav_cv">CV</span>
+                </button>
+                <a href="#contact" class="px-5 py-2.5 rounded-xl bg-sky-600 dark:bg-teal-500 hover:bg-sky-700 dark:hover:bg-teal-600 text-white dark:text-slate-950 font-bold text-sm transition-all duration-200 shadow-md active:scale-95" data-i18n="nav_hire">
+                    Hire Me
+                </a>
+            </div>
+
+            <!-- Mobile Menu & Theme/Lang Controls -->
+            <div class="flex items-center gap-2 md:hidden">
+                <button id="theme-toggle-mobile" aria-label="Toggle Theme Mobile" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-teal-400">
+                    <i class="fas fa-sun text-amber-500 dark:hidden"></i>
+                    <i class="fas fa-moon hidden dark:inline text-teal-400"></i>
+                </button>
+                <button id="lang-toggle-mobile" aria-label="Switch Language Mobile" class="px-2.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-sky-700 dark:text-teal-400 text-xs font-mono font-bold">
+                    <span id="lang-label-mobile">دری / EN</span>
+                </button>
+                <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none">
+                    <i class="fas fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-3 pb-6 space-y-3 shadow-2xl">
+            <a href="#about" class="mobile-nav-link block py-2 px-3 rounded-lg text-slate-800 dark:text-slate-200 font-medium hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_about">About Me</a>
+            <a href="#skills" class="mobile-nav-link block py-2 px-3 rounded-lg text-slate-800 dark:text-slate-200 font-medium hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_skills">Skills & Certificates</a>
+            <a href="#services" class="mobile-nav-link block py-2 px-3 rounded-lg text-slate-800 dark:text-slate-200 font-medium hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_services">What I Do</a>
+            <a href="#files" class="mobile-nav-link block py-2 px-3 rounded-lg text-slate-800 dark:text-slate-200 font-medium hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_files">Files & Downloads</a>
+            <a href="#contact" class="mobile-nav-link block py-2 px-3 rounded-lg text-slate-800 dark:text-slate-200 font-medium hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="nav_contact">Contact</a>
+            
+            <div class="pt-3 my-2 border-t border-slate-200 dark:border-slate-800"></div>
+
+            <div class="space-y-3">
+                <button id="download-cv-mobile" class="w-full text-center py-2.5 px-3 rounded-xl bg-sky-50 dark:bg-teal-500/10 text-sky-700 dark:text-teal-400 font-bold text-sm border border-sky-300 dark:border-teal-500/30 flex items-center justify-center gap-2">
+                    <i class="fas fa-file-download"></i> <span data-i18n="btn_cv">Download CV</span>
+                </button>
+                <a href="tel:+93790855072" class="block text-center py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-950 text-sky-700 dark:text-teal-400 font-mono font-bold text-sm border border-slate-300 dark:border-slate-800">
+                    <i class="fas fa-phone-alt mr-2"></i> +93790855072
+                </a>
+                <a href="#contact" class="mobile-nav-link block text-center w-full py-3 rounded-xl bg-sky-600 dark:bg-teal-500 text-white dark:text-slate-950 font-bold shadow-md" data-i18n="nav_hire">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20 relative z-10">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[calc(100vh-5rem)] flex items-center justify-center relative overflow-hidden py-16 lg:py-0">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Text Content -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left rtl:lg:text-right">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-100 dark:bg-teal-950/90 text-sky-800 dark:text-teal-300 text-xs font-mono font-bold border border-sky-300 dark:border-teal-800/60 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-sky-600 dark:bg-teal-400 animate-ping"></span>
+                            <span data-i18n="hero_tag">Network Engineer &bull; IT Specialist &bull; Python Developer</span>
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                            <span data-i18n="hero_hi">Hello, I'm</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-cyan-700 dark:from-teal-400 dark:to-cyan-400" data-i18n="name">Abdul Aziz Wahedi</span>
+                        </h1>
+                        
+                        <p class="text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed" data-i18n="hero_desc">
+                            I am a <span class="text-sky-700 dark:text-teal-400 font-bold">Network Engineer</span> and IT specialist. I build, connect, and fix computer networks. I hold certificates like CCNA, CCNP, and MTCNA. I work with Linux systems and write Python programs. I speak 3 languages fluently and type very fast.
+                        </p>
+
+                        <!-- Quick Info Badges -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                            <div class="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2 shadow-sm">
+                                <i class="fas fa-envelope text-sky-600 dark:text-teal-400"></i> abdulazizwahedi00@gmail.com
+                            </div>
+                            <div class="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2 shadow-sm">
+                                <i class="fas fa-phone text-sky-600 dark:text-teal-400"></i> +93790855072
+                            </div>
+                            <a href="https://maps.google.com/?q=Afghanistan" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2 shadow-sm hover:border-sky-500 dark:hover:border-teal-500 hover:text-sky-700 dark:hover:text-teal-400 transition-all cursor-pointer">
+                                <i class="fas fa-map-marker-alt text-sky-600 dark:text-teal-400"></i> <span data-i18n="location">Afghanistan</span> <i class="fas fa-external-link-alt text-[10px] opacity-70"></i>
+                            </a>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                            <button id="download-cv-hero" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-sky-600 hover:bg-sky-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white dark:text-slate-950 font-bold text-base shadow-md transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+                                <i class="fas fa-file-download"></i>
+                                <span data-i18n="btn_cv">Download CV</span>
+                            </button>
+                            <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-base transition-all hover:-translate-y-0.5 active:translate-y-0 text-center shadow-sm" data-i18n="hero_btn_contact">
+                                Send Message <i class="fas fa-paper-plane ml-2 text-sm"></i>
+                            </a>
+                            <button id="copy-email-hero" class="w-full sm:w-auto p-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-base transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 shadow-sm" title="Copy Email">
+                                <i class="fas fa-copy text-sky-600 dark:text-teal-400"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Hero Avatar / Visual with Glowing Tech Border -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-72 h-72 sm:w-85 sm:h-85 lg:w-96 lg:h-96">
+                            <!-- Glowing Tech Border Frame -->
+                            <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-sky-600 to-teal-500 dark:from-teal-500 dark:to-cyan-500 glow-border opacity-75 animate-pulse"></div>
+                            
+                            <!-- Inner Container -->
+                            <div class="relative w-full h-full rounded-3xl overflow-hidden border-2 border-sky-500/50 dark:border-teal-500/50 bg-white dark:bg-slate-900 p-2 shadow-2xl flex flex-col items-center justify-center">
+                                <img src="https://placehold.co/600x600/0f172a/0284c7?text=Abdul+Aziz+Wahedi" 
+                                     onerror="this.src='https://placehold.co/600x600/0f172a/14b8a6?text=Network+Engineer'" 
+                                     alt="Abdul Aziz Wahedi Profile Photo" 
+                                     class="w-full h-full object-cover rounded-2xl">
+                                
+                                <!-- Floating Tech Badge -->
+                                <div class="absolute bottom-4 left-4 right-4 glass px-4 py-3 rounded-2xl border border-slate-200 dark:border-teal-500/40 shadow-lg flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></div>
+                                        <div>
+                                            <p class="text-xs text-slate-600 dark:text-slate-400 font-mono" data-i18n="status_label">Status</p>
+                                            <p class="text-xs font-bold text-slate-900 dark:text-white" data-i18n="status_val">Ready to Work</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-mono px-2.5 py-1 rounded-md bg-sky-100 dark:bg-teal-500/20 text-sky-800 dark:text-teal-300 border border-sky-300 dark:border-teal-500/30 font-bold">CCNP / CCNA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Professional Profile Section -->
+        <section id="about" class="py-20 border-t border-b border-slate-200 dark:border-slate-800/80 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight" data-i18n="about_title">About Me</h2>
+                    <div class="w-16 h-1 bg-sky-600 dark:bg-teal-500 mx-auto rounded-full mt-3 mb-4"></div>
+                    <p class="text-slate-700 dark:text-slate-300 text-lg" data-i18n="about_subtitle">I am a hardworking IT professional who loves connecting computer systems and helping teams work smoothly.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="p-8 rounded-2xl card-bg border transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-sky-100 dark:bg-teal-500/10 text-sky-700 dark:text-teal-400 flex items-center justify-center text-2xl mb-6 border border-sky-200 dark:border-teal-500/20">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3" data-i18n="about_card1_title">Network Expert</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="about_card1_desc">
+                            I hold CCNA, CCNP, and MTCNA certificates. I connect routers and switches, set up Wi-Fi, build fast networks, and quickly fix internet problems.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="p-8 rounded-2xl card-bg border transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-100 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 flex items-center justify-center text-2xl mb-6 border border-cyan-200 dark:border-cyan-500/20">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3" data-i18n="about_card2_title">Systems & Python</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="about_card2_desc">
+                            I manage Linux computers, install operating systems, fix hardware problems (A+ & Network+ certified), and write Python code to do daily tasks automatically.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="p-8 rounded-2xl card-bg border transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-2xl mb-6 border border-emerald-200 dark:border-emerald-500/20">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3" data-i18n="about_card3_title">Languages & Web</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="about_card3_desc">
+                            I can speak 3 languages fluently and type very fast on the computer. I also know how to build websites using HTML, CSS, and Java.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Certifications Section -->
+        <section id="skills" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight" data-i18n="skills_title">Skills & Certificates</h2>
+                    <div class="w-16 h-1 bg-sky-600 dark:bg-teal-500 mx-auto rounded-full mt-3 mb-4"></div>
+                    <p class="text-slate-700 dark:text-slate-300 text-lg" data-i18n="skills_subtitle">Here are the main tools, certificates, and skills I use every day.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Networking Box -->
+                    <div class="p-6 rounded-2xl card-bg border">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i class="fas fa-ethernet text-sky-600 dark:text-teal-400"></i> <span data-i18n="skill_cat1">Network Certificates</span>
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-sky-100 dark:bg-teal-950/60 text-sky-800 dark:text-teal-300 rounded-lg text-xs font-mono border border-sky-200 dark:border-teal-800/60 font-bold">CCNP</span>
+                            <span class="px-3 py-1.5 bg-sky-100 dark:bg-teal-950/60 text-sky-800 dark:text-teal-300 rounded-lg text-xs font-mono border border-sky-200 dark:border-teal-800/60 font-bold">CCNA</span>
+                            <span class="px-3 py-1.5 bg-sky-100 dark:bg-teal-950/60 text-sky-800 dark:text-teal-300 rounded-lg text-xs font-mono border border-sky-200 dark:border-teal-800/60 font-bold">MTCNA</span>
+                            <span class="px-3 py-1.5 bg-sky-100 dark:bg-teal-950/60 text-sky-800 dark:text-teal-300 rounded-lg text-xs font-mono border border-sky-200 dark:border-teal-800/60 font-bold">Network+</span>
+                            <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-mono border border-slate-200 dark:border-slate-700">Cisco & Mikrotik</span>
+                            <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-mono border border-slate-200 dark:border-slate-700">Wi-Fi & Cables</span>
+                        </div>
+                    </div>
+
+                    <!-- Systems & Hardware Box -->
+                    <div class="p-6 rounded-2xl card-bg border">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i class="fas fa-server text-cyan-600 dark:text-cyan-400"></i> <span data-i18n="skill_cat2">Systems & Hardware</span>
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-cyan-100 dark:bg-cyan-950/60 text-cyan-800 dark:text-cyan-300 rounded-lg text-xs font-mono border border-cyan-200 dark:border-cyan-800/60 font-bold">Linux OS</span>
+                            <span class="px-3 py-1.5 bg-cyan-100 dark:bg-cyan-950/60 text-cyan-800 dark:text-cyan-300 rounded-lg text-xs font-mono border border-cyan-200 dark:border-cyan-800/60 font-bold">CompTIA A+</span>
+                            <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-mono border border-slate-200 dark:border-slate-700" data-i18n="skill_os">Windows Systems</span>
+                            <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-mono border border-slate-200 dark:border-slate-700">PC Repair</span>
+                            <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-mono border border-slate-200 dark:border-slate-700">Computer Setup</span>
+                        </div>
+                    </div>
+
+                    <!-- Programming & Web Box -->
+                    <div class="p-6 rounded-2xl card-bg border">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i class="fas fa-code text-emerald-600 dark:text-emerald-400"></i> <span data-i18n="skill_cat3">Coding & Web</span>
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 rounded-lg text-xs font-mono border border-emerald-200 dark:border-emerald-800/60 font-bold">Python</span>
+                            <span class="px-3 py-1.5 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 rounded-lg text-xs font-mono border border-emerald-200 dark:border-emerald-800/60 font-bold">HTML</span>
+                            <span class="px-3 py-1.5 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 rounded-lg text-xs font-mono border border-emerald-200 dark:border-emerald-800/60 font-bold">CSS</span>
+                            <span class="px-3 py-1.5 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 rounded-lg text-xs font-mono border border-emerald-200 dark:border-emerald-800/60 font-bold">Java</span>
+                            <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-mono border border-slate-200 dark:border-slate-700">Simple Automation</span>
+                        </div>
+                    </div>
+
+                    <!-- Professional / Soft Skills Box -->
+                    <div class="p-6 rounded-2xl card-bg border">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                            <i class="fas fa-user-check text-amber-600 dark:text-amber-400"></i> <span data-i18n="skill_cat4">Personal Skills</span>
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 rounded-lg text-xs font-mono border border-amber-200 dark:border-amber-800/60 font-bold" data-i18n="skill_trilingual">Speaks 3 Languages</span>
+                            <span class="px-3 py-1.5 bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 rounded-lg text-xs font-mono border border-amber-200 dark:border-amber-800/60 font-bold" data-i18n="skill_typing">Fast Typing</span>
+                            <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-mono border border-slate-200 dark:border-slate-700">Quick Problem Solver</span>
+                            <span class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-mono border border-slate-200 dark:border-slate-700">Good Team Player</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Services / Expertise Section -->
+        <section id="services" class="py-20 border-t border-slate-200 dark:border-slate-800/80 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight" data-i18n="services_title">What I Can Do For You</h2>
+                    <div class="w-16 h-1 bg-sky-600 dark:bg-teal-500 mx-auto rounded-full mt-3 mb-4"></div>
+                    <p class="text-slate-700 dark:text-slate-300 text-lg" data-i18n="services_subtitle">I help companies and offices keep their computers and internet running smoothly.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="p-8 rounded-2xl card-bg border">
+                        <div class="text-sky-600 dark:text-teal-400 text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3" data-i18n="service1_title">Build Office Networks</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="service1_desc">
+                            I set up safe and fast internet connections for offices using Mikrotik and Cisco routers, switches, and secure Wi-Fi systems.
+                        </p>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="p-8 rounded-2xl card-bg border">
+                        <div class="text-cyan-600 dark:text-cyan-400 text-3xl mb-4"><i class="fas fa-terminal"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3" data-i18n="service2_title">Linux & Python Scripts</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="service2_desc">
+                            I install and manage Linux servers, fix software errors, and write simple Python scripts to save time on repeating network jobs.
+                        </p>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="p-8 rounded-2xl card-bg border">
+                        <div class="text-emerald-600 dark:text-emerald-400 text-3xl mb-4"><i class="fas fa-headset"></i></div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3" data-i18n="service3_title">IT Help & Computer Fixes</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="service3_desc">
+                            I fix computer hardware and software issues (A+ standard), answer tech questions in 3 languages, and write clear notes fast.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Files & Downloads Section -->
+        <section id="files" class="py-20 border-t border-slate-200 dark:border-slate-800/80 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight" data-i18n="files_title">Files & Resources</h2>
+                    <div class="w-16 h-1 bg-sky-600 dark:bg-teal-500 mx-auto rounded-full mt-3 mb-4"></div>
+                    <p class="text-slate-700 dark:text-slate-300 text-lg" data-i18n="files_subtitle">Download my official CV, certificates summary, and technical documentation.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- File Card 1: Resume / CV -->
+                    <div class="p-6 rounded-2xl card-bg border flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-sky-100 dark:bg-teal-500/10 text-sky-700 dark:text-teal-400 flex items-center justify-center text-xl font-mono font-bold">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-mono font-semibold">TXT / DOC</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2" data-i18n="file1_title">Curriculum Vitae (CV)</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-6" data-i18n="file1_desc">Complete professional resume including experience, contact details, certifications, and language proficiency.</p>
+                        </div>
+                        <button id="download-cv-file-card" class="w-full py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white dark:text-slate-950 font-bold text-sm transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-download"></i> <span data-i18n="file_download_btn">Download CV</span>
+                        </button>
+                    </div>
+
+                    <!-- File Card 2: Certificates Overview -->
+                    <div class="p-6 rounded-2xl card-bg border flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-cyan-100 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 flex items-center justify-center text-xl font-mono font-bold">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-mono font-semibold">SUMMARY</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2" data-i18n="file2_title">Certifications Overview</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-6" data-i18n="file2_desc">Verified list of Cisco (CCNA, CCNP), MikroTik (MTCNA), and CompTIA (Network+, A+) credentials.</p>
+                        </div>
+                        <button id="download-cert-file-card" class="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 font-bold text-sm transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-download"></i> <span data-i18n="file_cert_btn">Download Details</span>
+                        </button>
+                    </div>
+
+                    <!-- File Card 3: Technical Skills Summary -->
+                    <div class="p-6 rounded-2xl card-bg border flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-xl font-mono font-bold">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-mono font-semibold">TECH SPEC</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2" data-i18n="file3_title">Technical Skills Sheet</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-6" data-i18n="file3_desc">Summary of Linux, Python automation, network routing protocols, and web development capabilities.</p>
+                        </div>
+                        <button id="download-skills-file-card" class="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 font-bold text-sm transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-download"></i> <span data-i18n="file_spec_btn">Download Spec Sheet</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight" data-i18n="contact_title">Contact Me</h2>
+                    <div class="w-16 h-1 bg-sky-600 dark:bg-teal-500 mx-auto rounded-full mt-3 mb-4"></div>
+                    <p class="text-slate-700 dark:text-slate-300 text-lg" data-i18n="contact_subtitle">Do you need a Network Engineer or IT Specialist? Write to me or call me below!</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Contact Info Cards -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="p-6 rounded-2xl card-bg border flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-sky-100 dark:bg-teal-500/10 text-sky-700 dark:text-teal-400 flex items-center justify-center text-xl shrink-0 border border-sky-200 dark:border-teal-500/20">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400" data-i18n="contact_email_label">EMAIL ME AT</h3>
+                                <a href="mailto:abdulazizwahedi00@gmail.com" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-teal-400 transition-colors">abdulazizwahedi00@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-2xl card-bg border flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-100 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 flex items-center justify-center text-xl shrink-0 border border-cyan-200 dark:border-cyan-500/20">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400" data-i18n="contact_phone_label">CALL ME AT</h3>
+                                <a href="tel:+93790855072" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-teal-400 transition-colors">+93 790 855 072</a>
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-2xl card-bg border flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-xl shrink-0 border border-emerald-200 dark:border-emerald-500/20">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400" data-i18n="contact_lang_label">LANGUAGES</h3>
+                                <p class="text-sm sm:text-base font-bold text-slate-900 dark:text-white" data-i18n="contact_lang_val">Fluently Speaks 3 Languages</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-7">
+                        <form id="contact-form" class="p-8 rounded-2xl card-bg border space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name-input" class="block text-xs font-mono font-bold text-slate-500 dark:text-slate-400 mb-2" data-i18n="form_name">YOUR NAME</label>
+                                    <input type="text" id="name-input" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 dark:focus:ring-teal-500 focus:outline-none transition-colors" placeholder="John Smith">
+                                </div>
+                                <div>
+                                    <label for="email-input" class="block text-xs font-mono font-bold text-slate-500 dark:text-slate-400 mb-2" data-i18n="form_email">YOUR EMAIL</label>
+                                    <input type="email" id="email-input" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 dark:focus:ring-teal-500 focus:outline-none transition-colors" placeholder="john@example.com">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="subject-input" class="block text-xs font-mono font-bold text-slate-500 dark:text-slate-400 mb-2" data-i18n="form_subject">SUBJECT</label>
+                                <input type="text" id="subject-input" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 dark:focus:ring-teal-500 focus:outline-none transition-colors" placeholder="Job Opportunity or Question">
+                            </div>
+                            <div>
+                                <label for="message-input" class="block text-xs font-mono font-bold text-slate-500 dark:text-slate-400 mb-2" data-i18n="form_message">MESSAGE</label>
+                                <textarea id="message-input" rows="4" required class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 dark:focus:ring-teal-500 focus:outline-none transition-colors resize-none" placeholder="Write your message here..."></textarea>
+                            </div>
+
+                            <!-- File Upload Attachment -->
+                            <div>
+                                <label class="block text-xs font-mono font-bold text-slate-500 dark:text-slate-400 mb-2" data-i18n="form_attachment">ATTACH FILE (OPTIONAL)</label>
+                                <div class="flex items-center gap-3">
+                                    <label for="file-attachment" class="cursor-pointer px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-mono font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all flex items-center gap-2">
+                                        <i class="fas fa-paperclip text-sky-600 dark:text-teal-400"></i>
+                                        <span id="file-label" data-i18n="form_attach_btn">Choose File</span>
+                                    </label>
+                                    <input type="file" id="file-attachment" class="hidden">
+                                    <span id="file-name" class="text-xs text-slate-500 dark:text-slate-400 font-mono truncate max-w-[200px]" data-i18n="form_no_file">No file chosen</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl bg-sky-600 hover:bg-sky-700 dark:bg-teal-500 dark:hover:bg-teal-600 text-white dark:text-slate-950 font-bold text-base transition-all shadow-md active:scale-[0.99] flex items-center justify-center gap-2" data-i18n="form_submit">
+                                <i class="fas fa-paper-plane"></i> Send Email to Abdul Aziz
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="glass px-6 py-4 rounded-2xl shadow-2xl border border-sky-500/40 dark:border-teal-500/40 flex items-center gap-3">
+            <i id="toast-icon" class="fas fa-check-circle text-sky-600 dark:text-teal-400 text-xl"></i>
+            <span id="toast-message" class="text-sm font-semibold text-slate-900 dark:text-white">Action successful</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-10 bg-white dark:bg-slate-950 transition-colors relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:items-center sm:justify-between">
+            <p class="text-sm text-slate-600 dark:text-slate-400 font-mono">
+                &copy; <span id="current-year"></span> <span data-i18n="name">Abdul Aziz Wahedi</span>. <span data-i18n="footer_rights">All rights reserved.</span>
+            </p>
+            <div class="flex items-center justify-center gap-6 mt-4 sm:mt-0 text-slate-600 dark:text-slate-400 text-sm font-semibold">
+                <a href="mailto:abdulazizwahedi00@gmail.com" class="hover:text-sky-600 dark:hover:text-teal-400 transition-colors">abdulazizwahedi00@gmail.com</a>
+                <span class="text-slate-400 dark:text-slate-700">&bull;</span>
+                <a href="#hero" class="hover:text-sky-600 dark:hover:text-teal-400 transition-colors" data-i18n="footer_top">Back to top <i class="fas fa-arrow-up ml-1 text-xs"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Logic & Three.js Background -->
+    <script>
+        // Set dynamic year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // -------------------------------------------------------------
+        // Theme Switcher (Dark / Light Mode)
+        // -------------------------------------------------------------
+        function updateThemeAppearance(isDark) {
+            if (particleMaterial && lineMaterial) {
+                if (isDark) {
+                    particleMaterial.color.setHex(0x14b8a6);
+                    particleMaterial.opacity = 0.8;
+                    lineMaterial.color.setHex(0x0d9488);
+                    lineMaterial.opacity = 0.25;
+                } else {
+                    particleMaterial.color.setHex(0x0284c7);
+                    particleMaterial.opacity = 0.75;
+                    lineMaterial.color.setHex(0x334155);
+                    lineMaterial.opacity = 0.20;
+                }
+            }
+        }
+
+        function toggleTheme() {
+            const htmlTag = document.documentElement;
+            if (htmlTag.classList.contains('dark')) {
+                htmlTag.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateThemeAppearance(false);
+            } else {
+                htmlTag.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateThemeAppearance(true);
+            }
+        }
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+
+        if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
+        // System or Saved Theme Init
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+
+        // -------------------------------------------------------------
+        // Three.js Interactive 3D Node Network Background
+        // -------------------------------------------------------------
+        const canvas = document.getElementById('bg-canvas');
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 400;
+
+        // Particle nodes
+        const particleCount = 95;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const velocities = [];
+
+        for (let i = 0; i < particleCount * 3; i += 3) {
+            positions[i] = (Math.random() - 0.5) * 800;
+            positions[i + 1] = (Math.random() - 0.5) * 800;
+            positions[i + 2] = (Math.random() - 0.5) * 400;
+
+            velocities.push({
+                x: (Math.random() - 0.5) * 0.8,
+                y: (Math.random() - 0.5) * 0.8,
+                z: (Math.random() - 0.5) * 0.5
+            });
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+        const isInitiallyDark = document.documentElement.classList.contains('dark');
+
+        // Particle Material
+        const particleMaterial = new THREE.PointsMaterial({
+            color: isInitiallyDark ? 0x14b8a6 : 0x0284c7,
+            size: 4,
+            transparent: true,
+            opacity: isInitiallyDark ? 0.8 : 0.75,
+            blending: THREE.AdditiveBlending
+        });
+
+        const particles = new THREE.Points(geometry, particleMaterial);
+        scene.add(particles);
+
+        // Lines connecting close nodes
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: isInitiallyDark ? 0x0d9488 : 0x334155,
+            transparent: true,
+            opacity: isInitiallyDark ? 0.25 : 0.20,
+            blending: THREE.AdditiveBlending
+        });
+
+        const lineGeometry = new THREE.BufferGeometry();
+        const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+        scene.add(lines);
+
+        // Mouse interaction state
+        let mouseX = 0, mouseY = 0;
+        let targetX = 0, targetY = 0;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - window.innerWidth / 2) * 0.2;
+            mouseY = (event.clientY - window.innerHeight / 2) * 0.2;
+        });
+
+        // Window resize handler
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Animation Loop
+        function animateThree() {
+            requestAnimationFrame(animateThree);
+
+            targetX += (mouseX - targetX) * 0.05;
+            targetY += (mouseY - targetY) * 0.05;
+
+            particles.rotation.y = targetX * 0.002;
+            particles.rotation.x = targetY * 0.002;
+            lines.rotation.y = particles.rotation.y;
+            lines.rotation.x = particles.rotation.x;
+
+            const posAttr = geometry.attributes.position;
+            const posArray = posAttr.array;
+
+            for (let i = 0; i < particleCount; i++) {
+                let i3 = i * 3;
+                posArray[i3] += velocities[i].x;
+                posArray[i3 + 1] += velocities[i].y;
+                posArray[i3 + 2] += velocities[i].z;
+
+                // Boundary bounce
+                if (posArray[i3] > 400 || posArray[i3] < -400) velocities[i].x *= -1;
+                if (posArray[i3 + 1] > 400 || posArray[i3 + 1] < -400) velocities[i].y *= -1;
+                if (posArray[i3 + 2] > 200 || posArray[i3 + 2] < -200) velocities[i].z *= -1;
+            }
+            posAttr.needsUpdate = true;
+
+            // Connect nearby particles with lines
+            const linePositions = [];
+            const threshold = 90;
+            for (let i = 0; i < particleCount; i++) {
+                for (let j = i + 1; j < particleCount; j++) {
+                    const dx = posArray[i * 3] - posArray[j * 3];
+                    const dy = posArray[i * 3 + 1] - posArray[j * 3 + 1];
+                    const dz = posArray[i * 3 + 2] - posArray[j * 3 + 2];
+                    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                    if (dist < threshold) {
+                        linePositions.push(
+                            posArray[i * 3], posArray[i * 3 + 1], posArray[i * 3 + 2],
+                            posArray[j * 3], posArray[j * 3 + 1], posArray[j * 3 + 2]
+                        );
+                    }
+                }
+            }
+            lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+
+            renderer.render(scene, camera);
+        }
+        animateThree();
+
+
+        // -------------------------------------------------------------
+        // Bilingual Dictionary & Language Switcher (English & Dari / دری)
+        const translations = {
+            en: {
+                name: "Abdul Aziz Wahedi",
+                nav_subtitle: "Network Engineer",
+                nav_about: "About Me",
+                nav_skills: "Skills & Certificates",
+                nav_services: "What I Do",
+                nav_files: "Files & Downloads",
+                nav_contact: "Contact",
+                nav_hire: "Hire Me",
+                nav_cv: "CV",
+                btn_cv: "Download CV",
+                hero_tag: "Network Engineer • IT Specialist • Python Developer",
+                hero_hi: "Hello, I'm",
+                hero_desc: "I am a Network Engineer and IT specialist. I build, connect, and fix computer networks. I hold certificates like CCNA, CCNP, and MTCNA. I work with Linux systems and write Python programs. I speak 3 languages fluently and type very fast.",
+                location: "Afghanistan",
+                hero_btn_contact: "Send Message",
+                hero_btn_copy: "Copy Email",
+                status_label: "Status",
+                status_val: "Ready to Work",
+                about_title: "About Me",
+                about_subtitle: "I am a hardworking IT professional who loves connecting computer systems and helping teams work smoothly.",
+                about_card1_title: "Network Expert",
+                about_card1_desc: "I hold CCNA, CCNP, and MTCNA certificates. I connect routers and switches, set up Wi-Fi, build fast networks, and quickly fix internet problems.",
+                about_card2_title: "Systems & Python",
+                about_card2_desc: "I manage Linux computers, install operating systems, fix hardware problems (A+ & Network+ certified), and write Python code to do daily tasks automatically.",
+                about_card3_title: "Languages & Web",
+                about_card3_desc: "I can speak 3 languages fluently and type very fast on the computer. I also know how to build websites using HTML, CSS, and Java.",
+                skills_title: "Skills & Certificates",
+                skills_subtitle: "Here are the main tools, certificates, and skills I use every day.",
+                skill_cat1: "Network Certificates",
+                skill_cat2: "Systems & Hardware",
+                skill_cat3: "Coding & Web",
+                skill_cat4: "Personal Skills",
+                skill_os: "Windows Systems",
+                skill_trilingual: "Speaks 3 Languages",
+                skill_typing: "Fast Typing",
+                services_title: "What I Can Do For You",
+                services_subtitle: "I help companies and offices keep their computers and internet running smoothly.",
+                service1_title: "Build Office Networks",
+                service1_desc: "I set up safe and fast internet connections for offices using Mikrotik and Cisco routers, switches, and secure Wi-Fi systems.",
+                service2_title: "Linux & Python Scripts",
+                service2_desc: "I install and manage Linux servers, fix software errors, and write simple Python scripts to save time on repeating network jobs.",
+                service3_title: "IT Help & Computer Fixes",
+                service3_desc: "I fix computer hardware and software issues (A+ standard), answer tech questions in 3 languages, and write clear notes fast.",
+                files_title: "Files & Resources",
+                files_subtitle: "Download my official CV, certificates summary, and technical documentation.",
+                file1_title: "Curriculum Vitae (CV)",
+                file1_desc: "Complete professional resume including experience, contact details, certifications, and language proficiency.",
+                file2_title: "Certifications Overview",
+                file2_desc: "Verified list of Cisco (CCNA, CCNP), MikroTik (MTCNA), and CompTIA (Network+, A+) credentials.",
+                file3_title: "Technical Skills Sheet",
+                file3_desc: "Summary of Linux, Python automation, network routing protocols, and web development capabilities.",
+                file_download_btn: "Download CV",
+                file_cert_btn: "Download Details",
+                file_spec_btn: "Download Spec Sheet",
+                contact_title: "Contact Me",
+                contact_subtitle: "Do you need a Network Engineer or IT Specialist? Write to me or call me below!",
+                contact_email_label: "EMAIL ME AT",
+                contact_phone_label: "CALL ME AT",
+                contact_lang_label: "LANGUAGES",
+                contact_lang_val: "Fluently Speaks 3 Languages",
+                form_name: "YOUR NAME",
+                form_email: "YOUR EMAIL",
+                form_subject: "SUBJECT",
+                form_message: "MESSAGE",
+                form_attachment: "ATTACH FILE (OPTIONAL)",
+                form_attach_btn: "Choose File",
+                form_no_file: "No file chosen",
+                form_submit: "Send Email to Abdul Aziz",
+                footer_rights: "All rights reserved.",
+                footer_top: "Back to top"
+            },
+            fa: {
+                name: "عبدالعزیز واحدی",
+                nav_subtitle: "مهندس شبکه",
+                nav_about: "درباره من",
+                nav_skills: "مهارت‌ها و گواهی‌نامه‌ها",
+                nav_services: "خدمات من",
+                nav_files: "فایل‌ها و دانلودها",
+                nav_contact: "تماس با من",
+                nav_hire: "استخدام من",
+                nav_cv: "خلص سوانح",
+                btn_cv: "دانلود خلص سوانح",
+                hero_tag: "مهندس شبکه • متخصص IT • برنامه‌نویس پایتون",
+                hero_hi: "سلام، من",
+                hero_desc: "من مهندس شبکه و متخصص IT هستم. شبکه‌های کامپیوتری را می‌سازم، وصل می‌کنم و مشکلات آن‌ها را حل می‌نمایم. دارای مدارک CCNA، CCNP و MTCNA هستم. با لینوکس کار می‌کنم و به زبان پایتون برنامه می‌نویسم. به ۳ زبان صحبت می‌کنم و تایپ بسیار سریع دارم.",
+                location: "افغانستان",
+                hero_btn_contact: "ارسال پیام",
+                hero_btn_copy: "کپی ایمیل",
+                status_label: "وضعیت",
+                status_val: "آماده به کار",
+                about_title: "درباره من",
+                about_subtitle: "من یک متخصص زحمت‌کش IT هستم که به وصل کردن سیستم‌های کامپیوتری و کمک به تیم‌ها علاقه دارم.",
+                about_card1_title: "متخصص شبکه",
+                about_card1_desc: "دارای مدارک CCNA، CCNP و MTCNA. روترها و سوئیچ‌ها را تنظیم می‌کنم، وای‌فای وصل می‌کنم و مشکلات اینترنت را به سرعت حل می‌نمایم.",
+                about_card2_title: "سیستم‌ها و پایتون",
+                about_card2_desc: "کامپیوترهای لینوکس را مدیریت می‌کنم، سیستم‌عامل نصب می‌کنم، مشکلات سخت‌افزاری را حل می‌نمایم و کد پایتون می‌نویسم.",
+                about_card3_title: "زبان‌ها و وب",
+                about_card3_desc: "به ۳ زبان به روانی صحبت می‌کنم و تایپ بسیار سریع دارم. همچنین با HTML، CSS و جاوا وب‌سایت می‌سازم.",
+                skills_title: "مهارت‌ها و گواهی‌نامه‌ها",
+                skills_subtitle: "این‌ها ابزارها، مدارک و مهارت‌های اصلی من هستند که هر روز استفاده می‌کنم.",
+                skill_cat1: "مدارک شبکه",
+                skill_cat2: "سیستم‌ها و سخت‌افزار",
+                skill_cat3: "کدنویسی و وب",
+                skill_cat4: "مهارت‌های فردی",
+                skill_os: "سیستم‌های ویندوژ",
+                skill_trilingual: "تسلط به ۳ زبان",
+                skill_typing: "تایپ سریع",
+                services_title: "کارهایی که برای شما انجام می‌دهم",
+                services_subtitle: "به شرکت‌ها و دفاتر کمک می‌کنم تا کامپیوترها و اینترنت آن‌ها همیشه بدون مشکل کار کنند.",
+                service1_title: "ساخت شبکه دفتر",
+                service1_desc: "اینترنت سریع و امن برای دفترها با استفاده از روترها و سوئیچ‌های سیسکو و میکروتیک راه‌اندازی می‌کنم.",
+                service2_title: "لینوکس و اسکریپت پایتون",
+                service2_desc: "سرورهای لینوکس را نصب می‌کنم و اسکریپت‌های ساده پایتون می‌نویسم تا کارها به صورت خودکار انجام شوند.",
+                service3_title: "کمک IT و تعمیر کامپیوتر",
+                service3_desc: "مشکلات سخت‌افزار و نرم‌افزار کامپیوتر را حل می‌کنم و به ۳ زبان پشتیبانی فنی ارائه می‌دهم.",
+                files_title: "فایل‌ها و منابع",
+                files_subtitle: "خلص سوانح رسمی، خلاصه مدرک‌ها و مشخصات فنی من را دانلود کنید.",
+                file1_title: "خلص سوانح (CV)",
+                file1_desc: "رزومه کامل کاری شامل تجربیات، اطلاعات تماس، مدارک و تسلط بر زبان‌ها.",
+                file2_title: "خلاصه مدارک بین‌المللی",
+                file2_desc: "لیست مدارک معتبر سیسکو (CCNA, CCNP)، میکروتیک (MTCNA) و کامپتیا (Network+, A+).",
+                file3_title: "مشخصات مهارت‌های فنی",
+                file3_desc: "خلاصه توانایی‌های لینوکس، اتوماسیون پایتون، پروتکل‌های شبکه و توسعه وب.",
+                file_download_btn: "دانلود خلص سوانح",
+                file_cert_btn: "دانلود جزئیات",
+                file_spec_btn: "دانلود مشخصات",
+                contact_title: "تماس با من",
+                contact_subtitle: "آیا به مهندس شبکه یا متخصص IT نیاز دارید؟ با من تماس بگیرید یا پیام بفرستید!",
+                contact_email_label: "ایمیل من",
+                contact_phone_label: "شماره تماس",
+                contact_lang_label: "زبان‌ها",
+                contact_lang_val: "تسلط کامل به ۳ زبان",
+                form_name: "نام شما",
+                form_email: "ایمیل شما",
+                form_subject: "موضوع",
+                form_message: "پیام شما",
+                form_attachment: "ضمیمه فایل (اختیاری)",
+                form_attach_btn: "انتخاب فایل",
+                form_no_file: "فایلی انتخاب نشده",
+                form_submit: "ارسال ایمیل به عبدالعزیز",
+                footer_rights: "تمامی حقوق محفوظ است.",
+                footer_top: "بازگشت به بالا"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const htmlTag = document.documentElement;
+            htmlTag.setAttribute('lang', lang);
+            htmlTag.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+
+            // Update all elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update toggle buttons text
+            const btnText = lang === 'en' ? 'دری / EN' : 'English / دری';
+            document.getElementById('lang-label').textContent = btnText;
+            document.getElementById('lang-label-mobile').textContent = btnText;
+        }
+
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langToggleMobileBtn = document.getElementById('lang-toggle-mobile');
+
+        if (langToggleBtn) {
+            langToggleBtn.addEventListener('click', () => {
+                switchLanguage(currentLang === 'en' ? 'fa' : 'en');
+            });
+        }
+        if (langToggleMobileBtn) {
+            langToggleMobileBtn.addEventListener('click', () => {
+                switchLanguage(currentLang === 'en' ? 'fa' : 'en');
+            });
+        }
+
+        // -------------------------------------------------------------
+        // Dynamic File & CV Downloader Functions
+        // -------------------------------------------------------------
+        function downloadTextFile(filename, text) {
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function generateAndDownloadCV() {
+            const cvContentEN = `
+===================================================================
+                       ABDUL AZIZ WAHEDI
+             Network Engineer & IT Infrastructure Specialist
+===================================================================
+
+CONTACT INFORMATION:
+--------------------
+- Email: abdulazizwahedi00@gmail.com
+- Phone: +93 790 855 072
+- Location: Afghanistan
+
+SUMMARY:
+--------
+Professional Network Engineer and IT Specialist with expertise in 
+building, configuring, and troubleshooting computer networks and server 
+environments. Skilled in Python scripting, Linux systems administration, 
+and web technologies. Fluent in 3 languages with high-speed typing capabilities.
+
+CERTIFICATIONS:
+---------------
+- Cisco Certified Network Professional (CCNP)
+- Cisco Certified Network Associate (CCNA)
+- MikroTik Certified Network Associate (MTCNA)
+- CompTIA Network+
+- CompTIA A+
+
+TECHNICAL SKILLS:
+-----------------
+- Networking: Cisco Routers/Switches, MikroTik, Network Routing & Switching, Wi-Fi Configuration
+- Systems: Linux Administration, Windows Systems, OS Installation, Hardware Maintenance
+- Programming & Web: Python, HTML, CSS, Java, Scripting & Automation
+- Key Competencies: Fast Typing, Problem Solving, Multilingual (3 Languages)
+
+===================================================================
+                 Abdul Aziz Wahedi - Curriculum Vitae
+===================================================================
+`;
+
+            const cvContentFA = `
+===================================================================
+                       عبدالعزیز واحدی
+                 مهندس شبکه و زیرساخت IT
+===================================================================
+
+اطلاعات تماس:
+------------
+- ایمیل: abdulazizwahedi00@gmail.com
+- شماره تماس: +93 790 855 072
+- موقعیت: افغانستان
+
+خلاصه سوابق:
+-----------
+مهندس شبکه و متخصص IT با تجربه در ساخت، تنظیم و عیب‌یابی شبکه‌های کامپیوتری
+و محیط‌های سرور. دارای مهارت در برنامه‌نویسی پایتون، مدیریت سیستم‌های لینوکس
+و تکنولوژی‌های وب. مسلط به ۳ زبان و دارای سرعت تایپ بسیار بالا.
+
+گواهی‌نامه‌های بین‌المللی:
+-----------------------
+- Cisco Certified Network Professional (CCNP)
+- Cisco Certified Network Associate (CCNA)
+- MikroTik Certified Network Associate (MTCNA)
+- CompTIA Network+
+- CompTIA A+
+
+===================================================================
+                    عبدالعزیز واحدی - خلص سوانح
+===================================================================
+`;
+
+            const cvText = currentLang === 'fa' ? cvContentFA : cvContentEN;
+            const fileName = currentLang === 'fa' ? 'Abdul_Aziz_Wahedi_CV_FA.txt' : 'Abdul_Aziz_Wahedi_CV_EN.txt';
+            downloadTextFile(fileName, cvText);
+            showToast(currentLang === 'fa' ? 'خلص سوانح دانلود شد!' : 'CV successfully downloaded!');
+        }
+
+        function downloadCertDetails() {
+            const certText = `
+===================================================================
+            ABDUL AZIZ WAHEDI - CERTIFICATIONS & CREDENTIALS
+===================================================================
+
+1. Cisco Certified Network Professional (CCNP)
+   - Status: Active
+   - Domain: Enterprise Routing, Switching & Network Architecture
+
+2. Cisco Certified Network Associate (CCNA)
+   - Status: Active
+   - Domain: Network Fundamentals, IP Connectivity, Security Fundamentals
+
+3. MikroTik Certified Network Associate (MTCNA)
+   - Status: Active
+   - Domain: RouterOS Management, Wireless Networking, Bandwidth Management
+
+4. CompTIA Network+
+   - Status: Active
+   - Domain: Network Infrastructure, Operations, and Troubleshooting
+
+5. CompTIA A+
+   - Status: Active
+   - Domain: IT Hardware, Software Installation, Troubleshooting
+
+===================================================================
+              Contact: abdulazizwahedi00@gmail.com
+===================================================================
+`;
+            downloadTextFile('Abdul_Aziz_Wahedi_Certifications.txt', certText);
+            showToast(currentLang === 'fa' ? 'اطلاعات مدارک دانلود شد!' : 'Certifications overview downloaded!');
+        }
+
+        function downloadSkillsSpec() {
+            const specText = `
+===================================================================
+            ABDUL AZIZ WAHEDI - TECHNICAL SPEC SHEET
+===================================================================
+
+TECHNICAL CAPABILITIES:
+-----------------------
+- Operating Systems: Linux (Ubuntu, Debian, RHEL), Windows Server, Desktop OS
+- Programming Languages: Python (Network Automation, Scripting), Java
+- Web Technologies: HTML, CSS, Basic Responsive Web Design
+- Networking Equipment: Cisco Routers & Switches, MikroTik Routers
+- Typing Speed: Fast & Accurate Technical Typing
+- Languages: Fluent in 3 Languages (English, Dari, Pashto)
+
+===================================================================
+              Contact: abdulazizwahedi00@gmail.com
+===================================================================
+`;
+            downloadTextFile('Abdul_Aziz_Wahedi_Tech_Spec.txt', specText);
+            showToast(currentLang === 'fa' ? 'مشخصات فنی دانلود شد!' : 'Technical spec sheet downloaded!');
+        }
+
+        // Attach File Card listeners
+        const cvHeroBtn = document.getElementById('download-cv-hero');
+        const cvNavBtn = document.getElementById('download-cv-nav');
+        const cvMobileBtn = document.getElementById('download-cv-mobile');
+        const cvFileCardBtn = document.getElementById('download-cv-file-card');
+        const certFileCardBtn = document.getElementById('download-cert-file-card');
+        const skillsFileCardBtn = document.getElementById('download-skills-file-card');
+
+        if (cvHeroBtn) cvHeroBtn.addEventListener('click', generateAndDownloadCV);
+        if (cvNavBtn) cvNavBtn.addEventListener('click', generateAndDownloadCV);
+        if (cvMobileBtn) cvMobileBtn.addEventListener('click', generateAndDownloadCV);
+        if (cvFileCardBtn) cvFileCardBtn.addEventListener('click', generateAndDownloadCV);
+        if (certFileCardBtn) certFileCardBtn.addEventListener('click', downloadCertDetails);
+        if (skillsFileCardBtn) skillsFileCardBtn.addEventListener('click', downloadSkillsSpec);
+
+
+        // -------------------------------------------------------------
+        // UI Navigation, File Upload display & Toast / Form Handlers
+        // -------------------------------------------------------------
+        const fileInput = document.getElementById('file-attachment');
+        const fileNameDisplay = document.getElementById('file-name');
+
+        if (fileInput && fileNameDisplay) {
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length > 0) {
+                    fileNameDisplay.textContent = fileInput.files[0].name;
+                } else {
+                    fileNameDisplay.textContent = currentLang === 'fa' ? 'فایلی انتخاب نشده' : 'No file chosen';
+                }
+            });
+        }
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            if (toast && toastMessage) {
+                toastMessage.textContent = message;
+                toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+                toast.classList.add('translate-y-0', 'opacity-100');
+
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+                }, 3500);
+            }
+        }
+
+        const copyEmailHero = document.getElementById('copy-email-hero');
+        if (copyEmailHero) {
+            copyEmailHero.addEventListener('click', () => {
+                const email = 'abdulazizwahedi00@gmail.com';
+                const textarea = document.createElement('textarea');
+                textarea.value = email;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+
+                showToast(currentLang === 'fa' ? 'ایمیل در کلیپ‌بورد کپی شد!' : 'Email copied to clipboard!');
+            });
+        }
+
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name-input').value;
+                const email = document.getElementById('email-input').value;
+                const subject = document.getElementById('subject-input').value;
+                const message = document.getElementById('message-input').value;
+                const fileAttached = fileInput && fileInput.files.length > 0 ? fileInput.files[0].name : 'None';
+
+                const mailtoUrl = `mailto:abdulazizwahedi00@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\nAttached File: " + fileAttached + "\n\nMessage:\n" + message)}`;
+                
+                showToast(currentLang === 'fa' ? 'با تشکر! در حال باز کردن ایمیل کلاینت شما...' : 'Thank you! Opening your email client...');
+                
+                setTimeout(() => {
+                    window.location.href = mailtoUrl;
+                }, 1000);
+
+                contactForm.reset();
+                if (fileNameDisplay) fileNameDisplay.textContent = currentLang === 'fa' ? 'فایلی انتخاب نشده' : 'No file chosen';
+            });
+        }
+    </script>
+</body>
+</html>
